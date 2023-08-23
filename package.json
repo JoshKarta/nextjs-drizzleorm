@@ -12,6 +12,7 @@
     "db-drop": "drizzle-kit drop"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.23.2",
     "@hookform/resolvers": "^3.2.0",
     "@planetscale/database": "^1.10.0",
     "@radix-ui/react-dialog": "^1.0.4",

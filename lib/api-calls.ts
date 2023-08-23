@@ -1,7 +1,6 @@
 import { db } from "@/app/db"
 import { Country, countries } from "@/app/db/schema"
 import { eq } from "drizzle-orm"
-import * as z from "zod"
 
 export async function getData():Promise<Country[]> {
     const results:Country[] = await db.select().from(countries).orderBy(countries.id)
