@@ -1,15 +1,17 @@
 // "use client"
-import { getData } from "@/lib/api-calls"
 import DataTable from "./(root)/table"
 import { Fragment } from "react"
 import { UserButton, currentUser } from "@clerk/nextjs"
-// import { QueryClient, QueryClientProvider } from "react-query"
+import { db } from "./db"
+import { Country, countries } from "./db/schema"
 
 // const queryClient = new QueryClient();
 
 export default async function Home() {
   const user = await currentUser()
-  const countries = await getData()
+  // const countries = await getData()
+  const data: Country[] = await db.select().from(countries).orderBy(countries.id)
+
   return (
     <Fragment>
       <div className="shadow-sm py-4">
@@ -21,7 +23,7 @@ export default async function Home() {
       <div className="max-w-7xl mx-auto mt-10">
         {/* <QueryClientProvider client={queryClient}>
         </QueryClientProvider> */}
-        <DataTable data={countries} />
+        <DataTable data={data} />
       </div>
     </Fragment>
   )
